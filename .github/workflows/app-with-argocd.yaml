@@ -66,7 +66,11 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        git config --local user.email 7910trio@naver.com
-        git config --local user.name 7910trio
+        git config --local user.email "7910trio@naver.com"
+        git config --local user.name "7910trio"
         git add .
         git commit -m "Update app image to latest"
+        git push
+
+    - name: Check updated deployment file
+      run: cat ./manifest/app-argocd-deployment.yaml
