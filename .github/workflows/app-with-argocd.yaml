@@ -61,7 +61,7 @@ jobs:
 
     - name: Set up Image
       run: |
-        sed -i "s%image: ${{ secrets.DOCKERHUB_USER }}/app-with-argocd:[A-z0-9]*%image: ${{ secrets.DOCKERHUB_USER }}/app-with-argocd:${{ github.sha }}%" ./manifest/app-argocd-deployment.yaml
+        sed -i "s%image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPOSITORY }}:[A-z0-9]*%image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPOSITORY }}:${{ github.sha }}%" ./manifest/app-argocd-deployment.yaml
 
 
     - name: Commit and push changes
@@ -70,4 +70,3 @@ jobs:
         git config --local user.name 7910trio
         git add .
         git commit -m "Update app image to latest"
-        git push origin HEAD:${{ github.ref }}
