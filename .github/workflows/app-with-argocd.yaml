@@ -70,7 +70,4 @@ jobs:
         git config --local user.name "7910trio"
         git add .
         git commit -m "Update app image to latest"
-        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPOSITORY }}.git HEAD:main 
-
-    - name: Check updated deployment file
-      run: cat ./manifest/app-argocd-deployment.yaml
+        git push  
