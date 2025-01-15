@@ -70,7 +70,7 @@ jobs:
         git config --local user.name "7910trio"
         git add .
         git commit -m "Update app image to latest"
-        git push
+        git push origin main
 
     - name: Check updated deployment file
       run: cat ./manifest/app-argocd-deployment.yaml
