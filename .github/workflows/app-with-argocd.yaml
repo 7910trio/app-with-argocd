@@ -70,3 +70,4 @@ jobs:
         git config --local user.name 7910trio
         git add .
         git commit -m "Update app image to latest"
+        git push origin HEAD:${{ github.ref }}
