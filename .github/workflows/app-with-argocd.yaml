@@ -35,7 +35,7 @@ jobs:
       run: mvn -B -DskipTests package --file pom.xml
       
     - name: Naming jar file
-      run: mv ./target/*.jar ./target/app.jar
+      run: mv ./target/app-with-argocd-0.0.1-SNAPSHOT.jar ./target/app.jar
 
     - name: Check jar file
       run: ls ./target
@@ -67,7 +67,7 @@ jobs:
 
     - name: Set up Image
       run: |
-        sed -i "s%image: ${{ secrets.DOCKERHUB_USERNAME }}/app-with-argocd:[A-z0-9]*%image: ${{ secrets.DOCKERHUB_USERNAME }}/app-with-argocd:${{ github.sha }}%" ./manifest/app-argocd-deployment.yaml
+        sed -i "s%image: ${{ secrets.DOCKERHUB_USERNAME }}/app-with-argocd:[A-z0-9]*%image: ${{ secrets.DOCKERHUB_USERNAME }}/app-with-argocd:${{ github.sha }}%" ./manifest/argocd-app.yaml
 
     - name: Commit and push changes
       run: |
