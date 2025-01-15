@@ -9,15 +9,6 @@ import lombok.Getter;
 public class StudentDto {
     String name;
 
-    // 기본 생성자
-    public StudentDto() {
-    }
-
-    // 파라미터를 받는 생성자
-    public StudentDto(String name) {
-        this.name = name;
-    }
-
     public String getName() {
         return name;
     }
