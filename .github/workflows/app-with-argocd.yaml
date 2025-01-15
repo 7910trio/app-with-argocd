@@ -58,3 +58,15 @@ jobs:
         context: .
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPOSITORY }}:${{ github.sha }}
+
+    - name: Set up Image
+      run: |
+        sed -i "s%image: ${{ secrets.DOCKERHUB_USER }}/app-with-argocd:[A-z0-9]*%image: ${{ secrets.DOCKERHUB_USER }}/app-with-argocd:${{ github.sha }}%" ./manifest/argocd-deployment.yaml
+
+
+    - name: Commit and push changes
+      run: |
+        git config --local user.email 7910trio@naver.com
+        git config --local user.name 7910trio
+        git add .
+        git commit -m "Update app image to latest"
