@@ -9,12 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-      with:
-        repository: 7910trio/app-with-argocd
-        ref: main
-        token: ${{ secrets.GITHUB_TOKEN }}
-        
+    - uses: actions/checkout@v4        
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
