@@ -59,7 +59,7 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPOSITORY }}:${{ github.sha }}
 
-    - name: actions/checkout@v4
+    - uses: actions/checkout@v4
       with:
         repository: 7910trio/app-with-argocd-manifest
         ref: main
