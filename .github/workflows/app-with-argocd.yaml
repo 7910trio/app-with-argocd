@@ -3,8 +3,6 @@ name: App With Github Actions with ArgoCD
 on:
   # workflow_dispatch
   push:
-    branches:
-      - main
     paths-ignore:
       - 'manifest/**'
 
@@ -14,10 +12,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4 
-      with:
-        repository: 7910trio/app-with-argocd
-        ref: main
-        token: ${{ secrets.TOKEN }}
 
     
     - name: Set up JDK 17
@@ -63,10 +57,21 @@ jobs:
     
     - name: Build and push
       uses: docker/build-push-action@v6
-      with: 
+      with:
         context: .
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPOSITORY }}:${{ github.sha }}
+
+  cd:
+    runs-on: ubuntu-latest
+    needs: ci
+    
+    steps:
+    - uses: actions/checkout@v4 
+      with:
+        repository: 7910trio/app-with-argocd
+        ref: main
+        token: ${{ secrets.TOKEN }}
 
     - name: Set up Image
       run: |
