@@ -2,10 +2,9 @@ name: App With Github Actions with ArgoCD
 
 on:
   # workflow_dispatch
-  push:
-    paths-ignore:
-      - '/manifest/**'
-      - '/target/**'
+  push
+    # paths-ignore:
+    #   - '/manifest/**'
 
 jobs:
   ci:
@@ -75,5 +74,5 @@ jobs:
         git config --local user.email "7910trio@naver.com"
         git config --local user.name "7910trio"
         git add .
-        git commit -m "Update nginx image to latest"
+        git commit -m "[ci skip] Update nginx image to latest"
         git push
