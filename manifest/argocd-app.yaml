@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
       - name: app-argocd-container
-        image: 7910trio/app-with-argocd:73ad9034d8101ff4e984870084e62fd8d8dd7c2b
+        image: 7910trio/app-with-argocd:c18a9ff2e49dfb5c945da3f1f0923397618d46b7
         ports:
           - protocol: TCP
             containerPort: 8080
