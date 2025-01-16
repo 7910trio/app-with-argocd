@@ -63,7 +63,7 @@ jobs:
     
     - name: Build and push
       uses: docker/build-push-action@v6
-      with:
+      with: 
         context: .
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPOSITORY }}:${{ github.sha }}
